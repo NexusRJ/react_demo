@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<div class="col-md-8">
+    <div class="act">
+        <h1>{{ article.title }}</h1>
+        <b>--{{ article.create_time }}--</b>
+        <h3>{{ article.body }}</h3>
+    </div>
+</div>
+{% endblock %}

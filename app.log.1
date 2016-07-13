@@ -1,0 +1,102 @@
+Exception on /admin/register [GET]
+Traceback (most recent call last):
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nexus6/OtherCodes/flask_project/app/admin/views.py", line 42, in register
+    user = User(username=form.username.data, password=form.password.data, real_name=form.real_name.data)
+  File "<string>", line 4, in __init__
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/orm/state.py", line 306, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/orm/state.py", line 303, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/ext/declarative/base.py", line 650, in _declarative_constructor
+    setattr(self, k, kwargs[k])
+  File "/Users/nexus6/OtherCodes/flask_project/app/models.py", line 41, in password
+    self.password_hash = generate_password_hash(password)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 230, in generate_password_hash
+    h, actual_method = _hash_internal(method, salt, password)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 192, in _hash_internal
+    hashfunc=hash_func)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 64, in pbkdf2_hex
+    rv = pbkdf2_bin(data, salt, iterations, keylen, hashfunc)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 104, in pbkdf2_bin
+    keylen)
+TypeError: pbkdf2_hmac() argument 2 must be string or buffer, not None
+Exception on /admin/register [GET]
+Traceback (most recent call last):
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nexus6/OtherCodes/flask_project/app/admin/views.py", line 42, in register
+    user = User(username=form.username.data, password=form.password.data, real_name=form.real_name.data)
+  File "<string>", line 4, in __init__
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/orm/state.py", line 306, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/orm/state.py", line 303, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/ext/declarative/base.py", line 650, in _declarative_constructor
+    setattr(self, k, kwargs[k])
+  File "/Users/nexus6/OtherCodes/flask_project/app/models.py", line 41, in password
+    self.password_hash = generate_password_hash(password)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 230, in generate_password_hash
+    h, actual_method = _hash_internal(method, salt, password)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 192, in _hash_internal
+    hashfunc=hash_func)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 64, in pbkdf2_hex
+    rv = pbkdf2_bin(data, salt, iterations, keylen, hashfunc)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 104, in pbkdf2_bin
+    keylen)
+TypeError: pbkdf2_hmac() argument 2 must be string or buffer, not None
+Exception on /admin/register [GET]
+Traceback (most recent call last):
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1988, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1641, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1544, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1639, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/flask/app.py", line 1625, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/nexus6/OtherCodes/flask_project/app/admin/views.py", line 42, in register
+    user = User(username=form.username.data, password=form.password.data, real_name=form.real_name.data)
+  File "<string>", line 4, in __init__
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/orm/state.py", line 306, in _initialize_instance
+    manager.dispatch.init_failure(self, args, kwargs)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/util/langhelpers.py", line 60, in __exit__
+    compat.reraise(exc_type, exc_value, exc_tb)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/orm/state.py", line 303, in _initialize_instance
+    return manager.original_init(*mixed[1:], **kwargs)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/sqlalchemy/ext/declarative/base.py", line 650, in _declarative_constructor
+    setattr(self, k, kwargs[k])
+  File "/Users/nexus6/OtherCodes/flask_project/app/models.py", line 41, in password
+    self.password_hash = generate_password_hash(password)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 230, in generate_password_hash
+    h, actual_method = _hash_internal(method, salt, password)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 192, in _hash_internal
+    hashfunc=hash_func)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 64, in pbkdf2_hex
+    rv = pbkdf2_bin(data, salt, iterations, keylen, hashfunc)
+  File "/Users/nexus6/.virtualenvs/flask/lib/python2.7/site-packages/werkzeug/security.py", line 104, in pbkdf2_bin
+    keylen)
+TypeError: pbkdf2_hmac() argument 2 must be string or buffer, not None
