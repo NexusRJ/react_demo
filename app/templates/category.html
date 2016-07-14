@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<div class="col-md-6">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>标题</th>
+                <th>正文</th>
+                <th>创建时间</th>
+            </tr>
+        </thead>
+        {% for article in articles %}
+        <tr>
+            <td>{{ article.title }}</td>
+            <td>{{ article.body[:20]+'...' }}</td>
+            <td>{{ article.create_time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock%}

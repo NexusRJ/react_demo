@@ -13,7 +13,7 @@ from . import admin
 
 @admin.route('/')
 def index():
-    return render_template('templates/admin/index.html')
+    return render_template('admin/index.html')
 
 
 @admin.route('/login', methods=['GET', 'POST'])
@@ -85,14 +85,14 @@ def article_del():
 
 @admin.route('/category', methods=['GET', 'POST'])
 def category():
-    clist = Category.query.all()
+    category_list = Category.query.all()
     form = PostCategoryForm()
     if form.validate_on_submit():
         category = Category(name=form.name.data)
         db.session.add(category)
         flash(u'添加成功')
         return redirect(url_for('admin.index'))
-    return render_template('admin/category.html', form=form, list=clist)
+    return render_template('admin/category.html', form=form, clist=category_list)
 
 
 @admin.route('/category/del', methods=['GET'])

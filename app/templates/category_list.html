@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block page_content %}
+<div class="col-md-6">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>分类名</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td><a href="{{ url_for('main.category', category_id=category.id) }}">{{ category.name }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
