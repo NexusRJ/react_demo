@@ -17,7 +17,7 @@
             {% for foo in article_list %}
                 <tr>
                     <td>{{ foo.id }}</td>
-                    <th><a href="{{ url_for('main.read', article_id=foo.id)}}">{{ foo.title }}</a></th>
+                    <th><a href="{{ url_for('admin.article_edit', article_id=foo.id)}}">{{ foo.title }}</a></th>
                     <td><a href="{{ url_for('admin.article_del', id=foo.id, a='del')}}">删除</a></td>
                 </tr>
             {% endfor %}

@@ -16,7 +16,7 @@ def index():
     return render_template('admin/index.html')
 
 
-@admin.route('/login', methods=['GET', 'POST'])
+@admin.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
@@ -28,7 +28,7 @@ def login():
     return render_template('admin/login.html', form=form)
 
 
-@admin.route('/register', methods=['GET', 'POST'])
+@admin.route('/register/', methods=['GET', 'POST'])
 def register():
     register_key = 'zhucema'
     form = RegistrationForm()
@@ -48,7 +48,7 @@ def register():
     return render_template('admin/register.html', form=form)
 
 
-@admin.route('/logout')
+@admin.route('/logout/')
 @login_required
 def logout():
     logout_user()
@@ -56,7 +56,7 @@ def logout():
     return redirect(url_for('main.index'))
 
 
-@admin.route('/article', methods=['GET', 'POST'])
+@admin.route('/article/', methods=['GET', 'POST'])
 @login_required
 def article():
     form = PostArticleForm()
@@ -69,7 +69,30 @@ def article():
     return render_template('admin/article.html', form=form, article_list=article_list)
 
 
-@admin.route('/article/del', methods=['GET'])
+@admin.route('/article/edit/<article_id>/', methods=['GET', 'POST'])
+@login_required
+def article_edit(article_id):
+    article = Article.query.filter_by(id=article_id).first()
+    if request.method == 'GET':
+        form = PostArticleForm()
+        form.title.data = article.title
+        form.body.data = article.body
+        form.category_id.data = article.category.id
+        return render_template('admin/article_edit.html', form=form, article=article)
+    elif request.method == 'POST':
+        form = PostArticleForm()
+        if form.validate_on_submit():
+            article.title = form.title.data
+            article.body = form.body.data
+            article.category_id = str(form.category_id.data.id)
+            db.session.commit()
+            flash('修改成功')
+        else:
+            flash('修改失败')
+        return render_template('admin/article_edit.html', form=form, article=article)
+
+
+@admin.route('/article/del/', methods=['GET'])
 @login_required
 def article_del():
     if request.args.get('id') is not None and request.args.get('a') == 'del':
@@ -95,7 +118,7 @@ def category():
     return render_template('admin/category.html', form=form, clist=category_list)
 
 
-@admin.route('/category/del', methods=['GET'])
+@admin.route('/category/del/', methods=['GET'])
 @login_required
 def category_del():
     if request.args.get('id') is not None and request.args.get('a') == 'del':

@@ -9,8 +9,8 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
-    a = Article.query.all()
-    return render_template('index.html', article_list=a)
+    article_list = Article.query.all()
+    return render_template('index.html', article_list=article_list)
 
 
 @main.route('/fuck')
