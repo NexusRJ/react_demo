@@ -13,16 +13,19 @@
     <div class="col-md-2">文章分类</div>
     <div class="col-md-4">{{ article.category.name }}</div>
     <div class="col-md-8">正文</div>
-    <div class="col-md-8">{{ article.body }}</div>
+    <div class="col-md-12">{{ article.body }}</div>
 </div>
 <script type="text/javascript">
-    var value = {{ form.category_id.data }};
-    var select = document.getElementById("category_id");
-    for(var i=1;i<=select.length;i++){
-        if(select[i].value == value){
-            select[i].selected = true;
-            break;
+    function set_category_select(){
+        var value = {{ form.category_id.data }};
+        var select = document.getElementById("category_id");
+        for(var i=1;i<=select.length;i++){
+            if(select[i].value == value){
+                select[i].selected = true;
+                break;
+            }
         }
     }
+    set_category_select()
 </script>
 {% endblock %}

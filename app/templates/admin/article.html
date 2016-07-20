@@ -11,14 +11,16 @@
                     <th>文章编号</th>
                     <th>文章标题</th>
                     <th>操作</th>
+                    <th>编辑</th>
                 </tr>
             </thead>
             <tbody>
-            {% for foo in article_list %}
+            {% for article in article_list %}
                 <tr>
-                    <td>{{ foo.id }}</td>
-                    <th><a href="{{ url_for('admin.article_edit', article_id=foo.id)}}">{{ foo.title }}</a></th>
-                    <td><a href="{{ url_for('admin.article_del', id=foo.id, a='del')}}">删除</a></td>
+                    <td>{{ article.id }}</td>
+                    <td><a href="{{ url_for('main.read', article_id=article.id)}}">{{ article.title }}</a></td>
+                    <td><a href="{{ url_for('admin.article_del', id=article.id, a='del')}}">删除</a></td>
+                    <td><a href="{{ url_for('admin.article_edit', article_id=article.id)}}">编辑</a></td>
                 </tr>
             {% endfor %}
             </tbody>
