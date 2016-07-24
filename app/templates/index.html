@@ -1,10 +1,35 @@
 {% extends 'base.html' %}
 {% block page_content %}
-<div class="col-md-8">
-    {% for foo in article_list %}
-    <div class="act">
-        <h3><a href="{{ url_for('main.read', article_id=foo.id) }}">{{ foo.title }}</a></h3>
+
+<div class="container">
+    <div class="col-md-8">
+        {% for article in article_list %}
+        <div class="row">
+            <div class="col-md-8">
+                <h1><a href="{{ url_for('main.read', article_id=article.id) }}">{{ article.title }}</a></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h3>{{ article.create_time }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <p>{{ article.body }}</p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+    <div class="col-md-4">
+        <h4>侧边栏</h4>
+        <ul>
+            <li>测试边栏</li>
+            <li>测试边栏</li>
+            <li>测试边栏</li>
+            <li>测试边栏</li>
+        </ul>
+    </div>
 </div>
+
 {% endblock %}
