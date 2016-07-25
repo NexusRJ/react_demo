@@ -1,9 +1,11 @@
 # coding: utf-8
 
+
 from __future__ import unicode_literals
 
 from flask import render_template, flash, redirect, url_for, request
 from flask_login import login_required, current_user, login_user, logout_user
+from sqlalchemy import exc
 
 from forms import LoginForm, RegistrationForm, PostArticleForm, PostCategoryForm
 from app.models import User, Article, Category
@@ -12,6 +14,7 @@ from . import admin
 
 
 @admin.route('/')
+@login_required
 def index():
     return render_template('admin/index.html')
 
@@ -107,26 +110,46 @@ def article_del():
 
 
 @admin.route('/category', methods=['GET', 'POST'])
+@login_required
 def category():
     category_list = Category.query.all()
     form = PostCategoryForm()
-    if form.validate_on_submit():
-        category = Category(name=form.name.data)
-        db.session.add(category)
-        flash(u'添加成功')
-        return redirect(url_for('admin.index'))
-    return render_template('admin/category.html', form=form, clist=category_list)
-
-
-@admin.route('/category/del/', methods=['GET'])
-@login_required
-def category_del():
-    if request.args.get('id') is not None and request.args.get('a') == 'del':
-        x = Category.query.filter_by(id=request.args.get('id')).first()
-        if x is not None:
-            db.session.delete(x)
-            db.session.commit()
-            flash(u'已经删除'+x.name)
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            category = Category(name=form.name.data)
+            db.session.add(category)
+            flash(u'添加成功')
             return redirect(url_for('admin.category'))
+        else:
+            flash(u'验证失败')
+            return render_template('admin/category.html', form=form, clist=category_list)
+    else:
+        return render_template('admin/category.html', form=form, clist=category_list)
+
+
+@admin.route('/category/del/<int:category_id>', methods=['GET'])
+@login_required
+def category_del(category_id):
+    category = Category.query.get_or_404(category_id)
+    try:
+        db.session.delete(category)
+        db.session.commit()
+        flash(u'已经删除目录 '+category.name)
+        return redirect(url_for('admin.category'))
+    except exc.OperationalError:
         flash(u'重新输入')
         return redirect(url_for('admin.category'))
+
+
+@admin.route('/category/edit/<category_id>', methods=['POST'])
+@login_required
+def category_edit(category_id):
+    form = PostCategoryForm()
+    if form.validate_on_submit():
+        category = Category.quert.filter(id=category_id).first()
+        category.name = form.name.data
+        db.session.commit()
+        flash('修改成功')
+        return redirect(url_for('admin.category'))
+    else:
+        return '修改失败', 404
