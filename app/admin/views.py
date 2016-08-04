@@ -33,7 +33,7 @@ def login():
 
 @admin.route('/register/', methods=['GET', 'POST'])
 def register():
-    register_key = 'zhucema'
+    register_key = 'nexusgrj@13856465716'
     form = RegistrationForm()
     if form.validate_on_submit():
         if form.registerkey.data != register_key:
