@@ -23,9 +23,9 @@ class Article(db.Model):
             'id': self.id,
             'title': self.title,
             'body': self.body,
-            'create_time': self.create_time,
+            'create_time': datetime.strftime(self.create_time, '%Y-%m-%dT%H:%M:%S'),
             'category': self.category.name,
-            'user': self.user.name
+            'user': self.user.real_name
         }
 
 
@@ -39,7 +39,6 @@ class Category(db.Model):
         return {
             'id': self.id,
             'name': self.name,
-            'articles': self.articles,
             }
 
 
