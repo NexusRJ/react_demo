@@ -1,0 +1,4 @@
+div.formgroup #body {
+    height: 300px;
+    overflow: scroll;
+}
