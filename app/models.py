@@ -18,12 +18,29 @@ class Article(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey('categorys.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'body': self.body,
+            'create_time': self.create_time,
+            'category': self.category.name,
+            'user': self.user.name
+        }
+
 
 class Category(db.Model):
     __tablename__ = 'categorys'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), unique=True)
     articles = db.relationship('Article', backref='category')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'articles': self.articles,
+            }
 
 
 class User(UserMixin, db.Model):
