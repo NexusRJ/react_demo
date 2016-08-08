@@ -1,12 +1,19 @@
 module.exports = {
-    entry: "./entry.js",
+    entry: "./index.js",
     output: {
-        path : __dirname,
+        path : './build',
         filename : "bundle.js"
     },
     module : {
         loaders : [
-            {test : /\.css$/,loader:"style!css"}
+            {test : /\.css$/, loaders:["style", "css"]},
+            {
+                test : /\.js|jsx$/, 
+                loaders: ['babel'],
+                query: {
+                    presets: ["react"]
+                }
+            }
         ]
     }
 };
