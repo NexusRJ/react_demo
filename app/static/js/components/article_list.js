@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import 'whatwg-fetch'
+import Article from './article'
 
 class ArticleList extends Component {
     constructor (props){
@@ -8,20 +9,35 @@ class ArticleList extends Component {
     }
     loadArticles (){
         console.log('start download articles')
-        fetch('/api/articles').then(function(response){
-            return response.json()
-        }).then(function(json){
-            if (response.status == 200){
-                this.setState({articles: json['data']})
+        return fetch('/api/articles/').then(function(res){
+            if (res.status == 200){
+                return res.json()
             }
         }).catch(function(ex){
             console.log('parsing failed', ex)
         })
     }
+    componentDidMount () {
+        this.loadArticles().then((json) => {
+            this.setState({articles: json['data']})
+        });
+        console.log(this.state.articles)
+    }
+    
     render () {
+        var articleNodes = this.state.articles.map(
+            function(article){
+                return (
+                    <Article key={article.id} user={article.user} create_time={article.create_time} 
+                    category={article.category} 
+                    title={article.title}>
+                        {article.body}
+                    </Article>
+                );
+            });
         return (
-            <div>
-                <Article articles={this.state.articles} />
+            <div className='article-list'>
+                {articleNodes}
             </div>
         )
     }
