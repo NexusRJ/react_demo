@@ -1,5 +1,5 @@
 module.exports = {
-    entry: "./index.js",
+    entry: ["whatwg-fetch", "./index.js"]
     output: {
         path : './build',
         filename : "bundle.js"
@@ -9,9 +9,9 @@ module.exports = {
             {test : /\.css$/, loaders:["style", "css"]},
             {
                 test : /\.js|jsx$/, 
-                loaders: ['babel'],
+                loader: 'babel',
                 query: {
-                    presets: ["react"]
+                    presets: ['es2015', 'react', 'stage-0']
                 }
             }
         ]

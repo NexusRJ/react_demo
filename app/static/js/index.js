@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
 import ArticleList from './components/article_list'
 
-React.render(
+ReactDOM.render(
     <ArticleList />,
     document.getElementById('article_list')
-)
+);
