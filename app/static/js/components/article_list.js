@@ -28,15 +28,15 @@ class ArticleList extends Component {
         var articleNodes = this.state.articles.map(
             function(article){
                 return (
-                    <Article key={article.id} user={article.user} create_time={article.create_time} 
-                    category={article.category} 
+                    <Article key={article.id} author={article.user} create_time={article.create_time} 
+                    category_name={article.category} 
                     title={article.title}>
                         {article.body}
                     </Article>
                 );
             });
         return (
-            <div className='article-list'>
+            <div className='article-list' >
                 {articleNodes}
             </div>
         )

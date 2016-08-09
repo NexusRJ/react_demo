@@ -1,3 +1,41 @@
+body a {
+    color: #909090;
+}
 div.form-group>textarea {
     height: 500px;
+}
+.article-list {
+    color: gray;
+    margin-top: 30px;
+    margin-left: -15px;
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+}
+.article {
+    margin: 35px 30px;
+}
+.title {
+    padding: 10px 20px;
+    background: #f9f9f9;
+    font-size: 30px;
+    color: #909090;
+    font-family: arial, "microsoft yahei", "simsun", "sans-self"; 
+}
+.title:hover {
+    color: #666666;
+}
+.info-row {
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+.article-content {
+    padding: 10px 20px;
+}
+.article-body {
+    font-size: 20px;
+    margin: 5px 10px;
+    line-height: 35px;
+    text-indent: 1em;
 }
