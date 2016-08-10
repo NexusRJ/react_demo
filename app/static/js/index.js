@@ -1,8 +1,9 @@
-import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
-import ArticleList from './components/article_list'
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+import BlogApp from './components/blog_app';
+import '../css/custom.css'
 
 ReactDOM.render(
-    <ArticleList />,
-    document.getElementById('article_list')
+    <BlogApp />,
+    document.getElementById('blog-app')
 );

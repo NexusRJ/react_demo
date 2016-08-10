@@ -36,7 +36,7 @@ class ArticleList extends Component {
                 );
             });
         return (
-            <div className='article-list' >
+            <div id='article-list' className='col-md-8'>
                 {articleNodes}
             </div>
         )

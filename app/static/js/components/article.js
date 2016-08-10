@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import 'react-bootstrap'
 
 class Article extends Component {
     render () {
@@ -10,7 +11,7 @@ class Article extends Component {
                 <div className='title'>
                     {this.props.title}
                 </div>
-                <div className='row info-row'>
+                <div className='info-row row'>
                     <div className='col-md-6 author'>
                         作者:{this.props.author}
                     </div>

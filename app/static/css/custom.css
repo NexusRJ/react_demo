@@ -1,4 +1,70 @@
-div.formgroup #body {
-    height: 300px;
-    overflow: scroll;
+* {
+    color: #909090;
+}
+div.form-group>textarea {
+    height: 500px;
+}
+
+#blog-app {
+    width: 100%;
+}
+
+/*Article part*/
+#article-list {
+    margin-left: 30px; 
+    color: gray;
+    border-radius: 5px;
+    border: 1px solid #dddddd;
+}
+.article {
+    margin: 35px 30px;
+    border-bottom: 1px solid #dddddd;
+}
+.title {
+    padding: 10px 20px;
+    background: #f9f9f9;
+    font-size: 30px;
+    color: #909090;
+    font-family: arial, "microsoft yahei", "simsun", "sans-self"; 
+}
+.title:hover {
+    color: #666666;
+}
+.info-row {
+    font-size: 15px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+.article-content {
+    padding: 10px 20px;
+}
+.article-body {
+    font-size: 20px;
+    margin: 5px 0 5px 0;
+    line-height: 35px;
+    text-indent: 1em;
+}
+.category-name {
+    font-size: 15px;
+    padding: 0 10px 40px 10px;
+}
+
+/*Navgatior part.*/
+#navbar {
+    width: 100%;
+}
+.nav-bar {
+    border-top: 1px solid #dddddd;
+    margin: 30px 30px 0 30px;
+    padding: 10px 0 10px 45px;
+    font-size: 25px;
+}
+.nav-bar li{
+    padding: 10px 20px;
+    list-style: none;
+    float: left;
+}
+.nav-bar li:hover {
+    color: #666666;
 }
