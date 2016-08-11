@@ -1,13 +1,14 @@
 import React, {Component} from 'react'
 import ArticleList from './article_list'
 import NavBar from './navbar'
+import {Link} from 'react-router'
 
 class BlogApp extends Component {
     render () {
         return (
             <div>
                 <NavBar />
-                <ArticleList />
+                <div id='content'>{this.props.children}</div>
             </div>
         )
     }

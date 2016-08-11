@@ -8,7 +8,8 @@ div.form-group>textarea {
 #blog-app {
     width: 100%;
 }
-
+#content {
+}
 /*Article part*/
 #article-list {
     margin-left: 30px;
