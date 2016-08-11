@@ -8,7 +8,9 @@ class BlogApp extends Component {
         return (
             <div>
                 <NavBar />
-                <div id='content'>{this.props.children}</div>
+                <div id='content' className='col-md-8'>
+                    {this.props.children}
+                </div>
             </div>
         )
     }

@@ -29,14 +29,13 @@ class ArticleList extends Component {
             function(article){
                 return (
                     <Article key={article.id} author={article.user} create_time={article.create_time} 
-                    category_name={article.category} 
-                    title={article.title}>
+                    category_name={article.category} title={article.title}>
                         {article.body}
                     </Article>
                 );
             });
         return (
-            <div id='article-list' className='col-md-8'>
+            <div id='article-list'>
                 {articleNodes}
             </div>
         )

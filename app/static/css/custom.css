@@ -9,14 +9,14 @@ div.form-group>textarea {
     width: 100%;
 }
 #content {
-}
-/*Article part*/
-#article-list {
     margin-left: 30px;
     margin-bottom: 30px;
     color: gray;
     border-radius: 5px;
     border: 1px solid #dddddd;
+}
+/*Article part*/
+#article-list {
 }
 .article {
     margin: 35px 30px;
