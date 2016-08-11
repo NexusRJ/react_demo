@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import 'react-bootstrap'
 
 class Article extends Component {
+    PropTypes: {
+        title: React.PropTypes.string,
+    }
     render () {
         var float_right = {
             float: 'right',

@@ -18,7 +18,7 @@ class ArticleList extends Component {
         })
     }
     componentDidMount () {
-        this.loadArticles().then((json) => {
+        this.loadArticles().then(json => {
             this.setState({articles: json['data']})
         });
         console.log(this.state.articles)

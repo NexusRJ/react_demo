@@ -11,7 +11,8 @@ div.form-group>textarea {
 
 /*Article part*/
 #article-list {
-    margin-left: 30px; 
+    margin-left: 30px;
+    margin-bottom: 30px;
     color: gray;
     border-radius: 5px;
     border: 1px solid #dddddd;
@@ -34,7 +35,7 @@ div.form-group>textarea {
     font-size: 15px;
     margin-top: 15px;
     margin-bottom: 5px;
-    margin-left: 5px;
+    margin-left: 10px;
 }
 .article-content {
     padding: 10px 20px;

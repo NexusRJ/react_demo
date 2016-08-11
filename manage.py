@@ -1,7 +1,6 @@
 # coding: utf-8
 
 from app import create_app, db
-from app.models import Article, Category, User
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 
