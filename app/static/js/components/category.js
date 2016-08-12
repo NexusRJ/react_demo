@@ -4,7 +4,7 @@ class Category extends Component {
     render () {
         console.log(this.props)
         return (
-            <div>
+            <div className='category'>
                 {this.props.category_name}
             </div>
         )
