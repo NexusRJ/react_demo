@@ -25,6 +25,7 @@ class Article(db.Model):
             'body': self.body,
             'create_time': datetime.strftime(self.create_time, '%Y-%m-%dT%H:%M:%S'),
             'category': self.category.name,
+            'category_id': self.category_id,
             'user': self.user.real_name
         }
 
