@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Category from './category'
+import ArticleActions from '../actions/ArticleActions'
 import 'whatwg-fetch'
 
 class CategoryList extends Component {
@@ -24,6 +25,9 @@ class CategoryList extends Component {
             )
         });
     }
+    showAllArticles () {
+        ArticleActions.filterArticles('all')
+    }
     render () {
         var categoryNodes = this.state.categories.map(
             function(category) {
@@ -33,6 +37,9 @@ class CategoryList extends Component {
             })
         return (
             <div>
+                <div className='category' onClick={this.showAllArticles.bind(this)}>
+                    所有文章
+                </div>
                 {categoryNodes}
             </div>
         )

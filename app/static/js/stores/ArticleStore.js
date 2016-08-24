@@ -9,7 +9,6 @@ var ArticleStore = assign({}, EventEmitter.prototype, {
     change_articles_filter: function(category_id) {
         console.log('get filter from dispatch', category_id)
         this.filter = category_id;
-        console.log(this.filter)
     },
     emitChange: function () {
         this.emit('change');

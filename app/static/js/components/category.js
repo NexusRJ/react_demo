@@ -8,7 +8,6 @@ class Category extends Component {
         // console.log(this.props.category_id)
     }
     render () {
-        console.log(this.props)
         return (
             <div className='category' onClick={this.changeFilter.bind(this)}>
                 {this.props.category_name}
