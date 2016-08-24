@@ -28,7 +28,7 @@ class CategoryList extends Component {
         var categoryNodes = this.state.categories.map(
             function(category) {
                 return (
-                    <Category key={category.id} category_name={category.name} />
+                    <Category key={category.id} category_name={category.name} category_id={category.id} />
                 )
             })
         return (
