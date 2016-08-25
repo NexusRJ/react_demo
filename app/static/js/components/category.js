@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import ArticleActions from '../actions/ArticleActions'
+import ArticleActions from '../actions/article_actions'
 
 class Category extends Component {
     changeFilter () {

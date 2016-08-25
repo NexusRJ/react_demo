@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Category from './category'
-import ArticleActions from '../actions/ArticleActions'
+import ArticleActions from '../actions/article_actions'
 import 'whatwg-fetch'
 
 class CategoryList extends Component {

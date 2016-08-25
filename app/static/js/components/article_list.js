@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Article from './article';
-import ArticleStore from '../stores/ArticleStore';
-import ArticleActions from '../actions/ArticleActions';
+import ArticleStore from '../stores/article_store';
+import ArticleActions from '../actions/article_actions';
 import 'whatwg-fetch';
 
 class ArticleList extends Component {

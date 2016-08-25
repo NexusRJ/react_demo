@@ -1,5 +1,5 @@
 import { Dispatcher } from 'flux'
-import ArticleStore from '../stores/ArticleStore'
+import ArticleStore from '../stores/article_store'
 
 var AppDispatcher = new Dispatcher()
 AppDispatcher.register(function (action) {
