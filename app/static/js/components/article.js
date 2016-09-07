@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import 'react-bootstrap'
+import {Router, Link} from 'react-router'
 
 class Article extends Component {
     render () {
@@ -9,7 +10,7 @@ class Article extends Component {
         return (
             <div className='article'>
                 <div className='title'>
-                    {this.props.title}
+                    <Link to={this.props.path}>{this.props.title}</Link>
                 </div>
                 <div className='info-row row'>
                     <div className='col-md-6 author'>

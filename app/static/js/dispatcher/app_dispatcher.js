@@ -11,9 +11,8 @@ AppDispatcher.register(function (action) {
         case 'DOWNLOAD_ARTICLES':
             ArticleStore.download_articles();
             break;
-        // case 'LOAD_ARTICLES':
-        //     ArticleStore.fetch_articles();
-        //     ArticleStore.emitChange();
+        case 'DOWNLOAD_ARTICLE':
+            ArticleStore.download_article(action.article_id);
         default:
     }
 })

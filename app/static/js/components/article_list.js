@@ -42,8 +42,9 @@ class ArticleList extends Component {
         }
         var articleNodes = articles.map(
             function(article){
+                var path = '/article/' + article.id
                 return (
-                    <Article key={article.id} author={article.user} create_time={article.create_time} category_name={article.category} title={article.title}>
+                    <Article key={article.id} author={article.user} create_time={article.create_time} category_name={article.category} title={article.title} path={path}>
                         {article.body}
                     </Article>
                 );
