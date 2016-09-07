@@ -8,6 +8,12 @@ AppDispatcher.register(function (action) {
             ArticleStore.change_articles_filter(action.category_id);
             ArticleStore.emitChange();
             break;
+        case 'DOWNLOAD_ARTICLES':
+            ArticleStore.download_articles();
+            break;
+        // case 'LOAD_ARTICLES':
+        //     ArticleStore.fetch_articles();
+        //     ArticleStore.emitChange();
         default:
     }
 })

@@ -9,25 +9,20 @@ class ArticleList extends Component {
         super(props);
         this.state = {articles: [], category_filter: 'all'}
     }
-    loadArticles (){
-        console.log('start download articles')
-        return fetch('/api/articles/').then(function(res){
-            if (res.status == 200){
-                console.log('download success.')
-                return res.json()
-                }
-            }).catch(function(ex){
-            console.log('parsing failed', ex)
-        })
-    }
     componentDidMount () {
-        this.loadArticles().then(json => {
-            this.setState({articles: json['data']});
-        });
+        ArticleActions.downloadArticles()
+        ArticleStore.addInitListener(this.loadArticles)
         ArticleStore.addChangeListener(this.changeArticleFilter)
     }
     componentWillUnmount () {
         ArticleStore.removeChangeListener(this.changeArticleFilter)
+        ArticleStore.removeInitListener(this.loadArticles)
+    }
+    loadArticles = () => {
+        console.log('load articles')
+        this.setState({
+            'articles': ArticleStore.getArticles()
+        })
     }
     changeArticleFilter = () => {
         this.setState({
@@ -36,6 +31,8 @@ class ArticleList extends Component {
     }
 
     render () {
+        console.log('state:')
+        console.log(this.state)
         var category_filter = this.state.category_filter;
         if (category_filter == 'all'){
             var articles = this.state.articles;
@@ -43,7 +40,6 @@ class ArticleList extends Component {
         else {
             var articles = this.state.articles.filter((a) => a.category_id == category_filter)
         }
-        // var articles = this.state.articles;
         var articleNodes = articles.map(
             function(article){
                 return (
