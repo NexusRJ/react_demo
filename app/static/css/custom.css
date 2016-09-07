@@ -92,6 +92,7 @@ div.form-group>textarea {
     font-size: 25px;
     line-height: 40px;
     margin-left: 10px;
+    cursor: pointer;
 }
 .category:hover {
     color: #666666;
