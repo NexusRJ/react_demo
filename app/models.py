@@ -50,6 +50,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(128))
     real_name = db.Column(db.String(64), unique=True)
     articles = db.relationship('Article', backref='user')
+    comments = db.relationship('Comment', backref='comment_user')
 
     @property
     def password(self):
@@ -61,6 +62,27 @@ class User(UserMixin, db.Model):
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.Text)
+    create_time = db.Column(db.DATETIME, default=datetime.utcnow())
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True, default=None)
+    article_id = db.Column(db.Integer, db.ForeignKey('articles.id'))
+
+    def to_json(self):
+        if self.get('user_id'):
+            user = self.comment_user.real_name
+        return {
+            'id': self.id,
+            'content': self.content,
+            'create_time': self.create_time,
+            'username': user,
+            'user_id': self.user_id,
+            'article_id': self.article_id
+        }
 
 
 @login_manager.user_loader

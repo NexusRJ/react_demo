@@ -2,7 +2,7 @@
 
 import json
 
-from flask import Blueprint, Response
+from flask import Blueprint, Response, request
 
 from models import Article, Category
 
@@ -78,3 +78,12 @@ def categories():
         return generate_json_response(category_list)
     else:
         return generate_json_response(status=404, message="No categories")
+
+
+@api.route('/comments/<article_id>/', methods=['GET', 'POST'])
+def comments(article_id):
+    if request.method == 'GET':
+        l = ['test comments 1', 'test comments 2', 'test comments 3']
+        return generate_json_response(l)
+    else:
+        return generate_json_response(status=404, message='Wrong request')

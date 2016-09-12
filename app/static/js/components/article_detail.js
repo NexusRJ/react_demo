@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ArticleStore from '../stores/article_store'
 import ArticleActions from '../actions/article_actions'
 import Article from './article'
+import CommentList from './comment_list'
 
 class ArticleDetail extends Component {
     constructor (props) {
@@ -29,7 +30,8 @@ class ArticleDetail extends Component {
             <div>
                 <Article key={article.id} author={article.user} create_time={article.create_time} category_name={article.category} title={article.title} path='#'>
                         {article.body}
-                    </Article>
+                </Article>
+                <CommentList article_id={article.id} />
             </div>
         )
     }

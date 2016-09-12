@@ -1,5 +1,6 @@
 import { Dispatcher } from 'flux'
 import ArticleStore from '../stores/article_store'
+import CommentStore from '../stores/comment_store'
 
 var AppDispatcher = new Dispatcher()
 AppDispatcher.register(function (action) {
@@ -13,6 +14,8 @@ AppDispatcher.register(function (action) {
             break;
         case 'DOWNLOAD_ARTICLE':
             ArticleStore.download_article(action.article_id);
+        case 'DOWNLOAD_COMMENTS':
+            CommentStore.download_comments(action.article_id);
         default:
     }
 })

@@ -9,6 +9,9 @@ a:hover {
     text-decoration: none;
     color: #666666;
 }
+a:visited { 
+    text-decoration: none; 
+} 
 div.form-group>textarea {
     height: 500px;
 }
