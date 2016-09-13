@@ -4,7 +4,8 @@ import json
 
 from flask import Blueprint, Response, request
 
-from models import Article, Category
+from models import Article, Category, Comment
+from app import db
 
 api = Blueprint('api', __name__)
 
@@ -83,7 +84,18 @@ def categories():
 @api.route('/comments/<article_id>/', methods=['GET', 'POST'])
 def comments(article_id):
     if request.method == 'GET':
-        l = ['test comments 1', 'test comments 2', 'test comments 3']
+        l = [{'comment_id': 1, 'content': 'test comments 1'}, {'comment_id': 2, 'content': 'test comments 2'}, {'comment_id': 3, 'content': 'test comments 3'}]
         return generate_json_response(l)
+    elif request.method == 'POST':
+        data = json.loads(request.json)
+        content = data.get('content')
+        user_id = data.get('user', None)
+        article = Article.query.filter_by(id=int(article_id)).first()
+        if content and article:
+            comment = Comment(content=content, user_id=user_id, article_id=int(article_id))
+            db.session.add(comment)
+            return generate_json_response(status=201, message='Comment created successily')
+        else:
+            return generate_json_response(status=404, message='Wrong comment content or article not exists')
     else:
-        return generate_json_response(status=404, message='Wrong request')
+        return generate_json_response(status=400, message='Wrong request')
