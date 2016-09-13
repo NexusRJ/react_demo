@@ -31,8 +31,6 @@ class ArticleList extends Component {
     }
 
     render () {
-        console.log('state:')
-        console.log(this.state)
         var category_filter = this.state.category_filter;
         if (category_filter == 'all'){
             var articles = this.state.articles;

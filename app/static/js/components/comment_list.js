@@ -6,9 +6,9 @@ import CommentStore from '../stores/comment_store';
 class CommentList extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {'comments': []}
     }
-    componentDidMount () {
+    componentWillMount () {
         CommentActions.downloadComments(this.props.article_id)
         CommentStore.addCommentsInitListener(this.loadComments)
     }
@@ -20,13 +20,20 @@ class CommentList extends Component {
         this.setState({
             'comments': CommentStore.getComments(this.props.article_id)
         });
-        console.log(this.state);
     }
     render () {
-        console.log(this.state)
+        console.log('render comments.')
+        var commentNodes = this.state.comments.map(
+            function(comment){
+                return (
+                    <Comment key={comment.comment_id} content={comment.content}>
+                    </Comment>
+                    )
+            }
+        )
         return (
             <div>
-                {this.state.comments}
+                {commentNodes}
             </div>
         )
     }

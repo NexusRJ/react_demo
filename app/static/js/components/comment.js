@@ -4,7 +4,7 @@ class Comment extends Component {
     render () {
         return (
             <div>
-                <p>This is a comment</p>
+                <p>{this.props.content}</p>
             </div>
         )
     }

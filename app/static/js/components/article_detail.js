@@ -11,9 +11,7 @@ class ArticleDetail extends Component {
     }
     componentDidMount () {
         ArticleActions.downloadArticle(this.props.params.id)
-        console.log(1)
         ArticleStore.addOneArticleInitListener(this.loadArticle)
-        console.log(2)
     }
     componentWillUnmount () {
         ArticleStore.removeOneArticleInitListener(this.loadArticle)
@@ -25,6 +23,7 @@ class ArticleDetail extends Component {
         })
     }
     render () {
+        console.log('render articles.')
         var article = this.state.article
         return (
             <div>
