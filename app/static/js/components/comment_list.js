@@ -2,18 +2,19 @@ import React, {Component} from 'react';
 import Comment from './comment';
 import CommentActions from '../actions/comment_actions';
 import CommentStore from '../stores/comment_store';
+import CommentInputBox from './comment_input_box';
 
 class CommentList extends Component {
     constructor(props) {
         super(props);
-        this.state = {'comments': []}
+        this.state = {'comments': []};
     }
     componentWillMount () {
-        CommentActions.downloadComments(this.props.article_id)
-        CommentStore.addCommentsInitListener(this.loadComments)
+        CommentActions.downloadComments(this.props.article_id);
+        CommentStore.addCommentsInitListener(this.loadComments);
     }
     componentWillUnmount () {
-        CommentStore.removeCommentsInitListener(this.loadComments)
+        CommentStore.removeCommentsInitListener(this.loadComments);
     }
     loadComments = () => {
         console.log('load comments');
@@ -22,21 +23,21 @@ class CommentList extends Component {
         });
     }
     render () {
-        console.log('render comments.')
+        console.log('render comments.');
         var commentNodes = this.state.comments.map(
             function(comment){
                 return (
-                    <Comment key={comment.comment_id} content={comment.content}>
-                    </Comment>
-                    )
+                    <Comment key={comment.comment_id} content={comment.content} create_time={comment.create_time}></Comment>
+                    );
             }
-        )
+        );
         return (
-            <div>
+            <div id='comment-box'>
+                <CommentInputBox />
                 {commentNodes}
             </div>
-        )
+        );
     }
 }
 
-export default CommentList
+export default CommentList;
