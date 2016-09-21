@@ -84,7 +84,10 @@ def categories():
 @api.route('/comments/<article_id>/', methods=['GET', 'POST'])
 def comments(article_id):
     if request.method == 'GET':
-        l = [{'comment_id': 1, 'content': 'test comments 1'}, {'comment_id': 2, 'content': 'test comments 2'}, {'comment_id': 3, 'content': 'test comments 3'}]
+        from datetime import datetime
+        l = [{'comment_id': 1, 'content': 'test comments 1', 'create_time': str(datetime.now().date())},
+             {'comment_id': 2, 'content': 'test comments 2', 'create_time': str(datetime.now().date())},
+             {'comment_id': 3, 'content': 'test comments 3', 'create_time': str(datetime.now().date())}]
         return generate_json_response(l)
     elif request.method == 'POST':
         data = json.loads(request.json)
