@@ -9,9 +9,9 @@ a:hover {
     text-decoration: none;
     color: #666666;
 }
-a:visited { 
-    text-decoration: none; 
-} 
+a:visited {
+    text-decoration: none;
+}
 div.form-group>textarea {
     height: 500px;
 }
@@ -38,7 +38,7 @@ div.form-group>textarea {
     background: #f9f9f9;
     font-size: 30px;
     color: #909090;
-    font-family: arial, "microsoft yahei", "simsun", "sans-self"; 
+    font-family: arial, "microsoft yahei", "simsun", "sans-self";
 }
 .title:hover {
     color: #666666;
@@ -99,4 +99,46 @@ div.form-group>textarea {
 }
 .category:hover {
     color: #666666;
+}
+
+/*Comment part*/
+#comment-box {
+    margin: 50px 30px;
+}
+/*#comment-box p {
+    padding: 0;
+}*/
+textarea.comment-input-box {
+    resize: none;
+    height: 200px;
+    width: 98%;
+    margin: 0 1%;
+    overflow: scroll;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px 0 0 20px;
+}
+input.comment_button {
+    margin: 15px 5px 15px 10px;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    background: #eee;
+    color: #777;
+    border: 1px solid #ccc;
+}
+.comment {
+    margin: 15px 15px 30px 15px;
+}
+.comment p {
+    margin: 0;
+}
+.comment-content {
+    clear: both;
+}
+.comment-time {
+    width: 100%;
+    font-size: small;
+    text-align: right;
+    border-bottom: 1px dotted #eee;
 }

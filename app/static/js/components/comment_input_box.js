@@ -8,13 +8,20 @@ class CommentInputBox extends Component {
     handleChange = (event) => {
         this.setState({value: event.target.value});
     }
+    handleSubmit = (event) => {
+        alert(this.state.value);
+    }
+    handleReset = () => {
+        this.setState({value: ''});
+    }
     render() {
         return (
             <div>
-                <div>{this.state.value}</div>
-                <input
+                <textarea className='comment-input-box'
                     type='text' value={this.state.value} onChange={this.handleChange} placeholder='Please input.'
                 />
+                <input className='comment_button' type='button' onClick={this.handleSubmit} value='提交' />
+                <input className='comment_button' type='button' onClick={this.handleReset} value='重置' />
             </div>
         );
     }

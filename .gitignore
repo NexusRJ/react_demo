@@ -96,3 +96,4 @@ log/
 .ropeproject
 
 node_modules
+.DS_Store
