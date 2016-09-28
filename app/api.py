@@ -85,19 +85,23 @@ def categories():
 def comments(article_id):
     if request.method == 'GET':
         from datetime import datetime
-        l = [{'comment_id': 1, 'content': 'test comments 1', 'create_time': str(datetime.now().date())},
-             {'comment_id': 2, 'content': 'test comments 2', 'create_time': str(datetime.now().date())},
-             {'comment_id': 3, 'content': 'test comments 3', 'create_time': str(datetime.now().date())}]
-        return generate_json_response(l)
+        comments = Comment.query.filter_by(article_id=int(article_id))
+        comments_list = []
+        for comment in comments:
+            comments_list.append(comment.to_dict())
+        return generate_json_response(comments_list)
     elif request.method == 'POST':
-        data = json.loads(request.json)
-        content = data.get('content')
+        data = request.json
+        content = data.get('comment')
         user_id = data.get('user', None)
         article = Article.query.filter_by(id=int(article_id)).first()
         if content and article:
             comment = Comment(content=content, user_id=user_id, article_id=int(article_id))
             db.session.add(comment)
-            return generate_json_response(status=201, message='Comment created successily')
+            db.session.flush()
+            data = comment.to_dict()
+            db.session.commit()
+            return generate_json_response(data, status=200, message='Comment created successfully')
         else:
             return generate_json_response(status=404, message='Wrong comment content or article not exists')
     else:

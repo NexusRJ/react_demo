@@ -72,14 +72,11 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True, default=None)
     article_id = db.Column(db.Integer, db.ForeignKey('articles.id'))
 
-    def to_json(self):
-        if self.get('user_id'):
-            user = self.comment_user.real_name
+    def to_dict(self):
         return {
-            'id': self.id,
+            'comment_id': self.id,
             'content': self.content,
-            'create_time': self.create_time,
-            'username': user,
+            'create_time': self.create_time.strftime('%Y-%m-%d %H:%M:%S'),
             'user_id': self.user_id,
             'article_id': self.article_id
         }
