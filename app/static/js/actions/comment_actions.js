@@ -1,4 +1,4 @@
-import AppDispatcher from '../dispatcher/app_dispatcher'
+import AppDispatcher from '../dispatcher/app_dispatcher';
 
 var CommentActions = {
     // filterComments: function(category_id) {
@@ -13,8 +13,16 @@ var CommentActions = {
         AppDispatcher.dispatch({
             actionType: 'DOWNLOAD_COMMENTS',
             article_id: article_id
-        })
+        });
     },
+    postComment: function(article_id, comment) {
+        console.log('dispatch recive post comment action');
+        AppDispatcher.dispatch({
+            actionType: 'POST_COMMENT',
+            article_id: article_id,
+            comment: comment
+        });
+    }
     // downloadComment: function(article_id) {
     //     console.log('dispatch recive download one article');
     //     AppDispatcher.dispatch({
@@ -30,4 +38,4 @@ var CommentActions = {
     // }
 };
 
-export default CommentActions
+export default CommentActions;
