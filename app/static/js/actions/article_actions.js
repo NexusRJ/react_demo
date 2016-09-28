@@ -1,4 +1,4 @@
-import AppDispatcher from '../dispatcher/app_dispatcher'
+import AppDispatcher from '../dispatcher/app_dispatcher';
 
 var ArticleActions = {
     filterArticles: function(category_id) {
@@ -12,14 +12,14 @@ var ArticleActions = {
         console.log('dispatch recive download articles action');
         AppDispatcher.dispatch({
             actionType: 'DOWNLOAD_ARTICLES',
-        })
+        });
     },
     downloadArticle: function(article_id) {
         console.log('dispatch recive download one article');
         AppDispatcher.dispatch({
             actionType: 'DOWNLOAD_ARTICLE',
             article_id: article_id
-        })
+        });
     },
     // loadArticles: function(){
     //     console.log('dispatch recive load articles action');
@@ -29,4 +29,4 @@ var ArticleActions = {
     // }
 };
 
-export default ArticleActions
+export default ArticleActions;
