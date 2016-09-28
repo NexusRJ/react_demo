@@ -10,11 +10,11 @@ class CommentList extends Component {
         this.state = {'comments': []};
     }
     componentWillMount () {
+        CommentStore.addCommentsChangeListener(this.loadComments);
         CommentActions.downloadComments(this.props.article_id);
-        CommentStore.addCommentsInitListener(this.loadComments);
     }
     componentWillUnmount () {
-        CommentStore.removeCommentsInitListener(this.loadComments);
+        CommentStore.removeCommentsChangeListener(this.loadComments);
     }
     loadComments = () => {
         console.log('load comments');
@@ -33,7 +33,7 @@ class CommentList extends Component {
         );
         return (
             <div id='comment-box'>
-                <CommentInputBox />
+                <CommentInputBox article_id={this.props.article_id} />
                 {commentNodes}
             </div>
         );

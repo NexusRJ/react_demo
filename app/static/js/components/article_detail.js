@@ -30,7 +30,7 @@ class ArticleDetail extends Component {
                 <Article key={article.id} author={article.user} create_time={article.create_time} category_name={article.category} title={article.title} path='#'>
                         {article.body}
                 </Article>
-                <CommentList article_id={article.id} />
+                <CommentList article_id={this.props.params.id} />
             </div>
         )
     }

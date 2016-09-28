@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import CommentActions from '../actions/comment_actions';
 
 class CommentInputBox extends Component {
     constructor (props) {
@@ -9,7 +10,14 @@ class CommentInputBox extends Component {
         this.setState({value: event.target.value});
     }
     handleSubmit = (event) => {
-        alert(this.state.value);
+        if(this.state.value == ''){
+            alert('Please input comment.');
+        }
+        else{
+            CommentActions.postComment(this.props.article_id, this.state.value);
+            alert('Post success');
+            this.handleReset();
+        }
     }
     handleReset = () => {
         this.setState({value: ''});

@@ -130,11 +130,12 @@ input.comment_button {
 .comment {
     margin: 15px 15px 30px 15px;
 }
-.comment p {
-    margin: 0;
-}
 .comment-content {
+    word-wrap: break-word;
+    word-break: normal;
+    line-height: 150%;
     clear: both;
+    width: 100%;
 }
 .comment-time {
     width: 100%;
