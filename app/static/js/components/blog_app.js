@@ -1,10 +1,14 @@
-import React, {Component} from 'react'
-import ArticleList from './article_list'
-import NavBar from './navbar'
-import SideBar from './sidebar'
-import {Link} from 'react-router'
+import React, {Component} from 'react';
+import ArticleList from './article_list';
+import NavBar from './navbar';
+import SideBar from './sidebar';
+import {Link} from 'react-router';
+import ArticleActions from '../actions/article_actions';
 
 class BlogApp extends Component {
+    componentWillMount () {
+        ArticleActions.downloadArticles();
+    }
     render () {
         return (
             <div>
@@ -14,8 +18,8 @@ class BlogApp extends Component {
                 </div>
                 <SideBar />
             </div>
-        )
+        );
     }
 }
 
-export default BlogApp
+export default BlogApp;

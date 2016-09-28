@@ -9,14 +9,16 @@ class ArticleList extends Component {
         super(props);
         this.state = {articles: [], category_filter: 'all'};
     }
+    componentWillMount () {
+        ArticleStore.addChangeListener(this.loadArticles);
+        ArticleStore.addChangeListener(this.getFilter);
+    }
     componentDidMount () {
-        ArticleActions.downloadArticles();
-        ArticleStore.addInitListener(this.loadArticles);
-        ArticleStore.addChangeListener(this.changeArticleFilter);
+        this.loadArticles();
     }
     componentWillUnmount () {
-        ArticleStore.removeChangeListener(this.changeArticleFilter);
-        ArticleStore.removeInitListener(this.loadArticles);
+        ArticleStore.removeChangeListener(this.getFilter);
+        ArticleStore.removeChangeListener(this.loadArticles);
     }
     loadArticles = () => {
         console.log('load articles');
@@ -24,7 +26,7 @@ class ArticleList extends Component {
             'articles': ArticleStore.getArticles()
         });
     }
-    changeArticleFilter = () => {
+    getFilter = () => {
         this.setState({
             'category_filter': ArticleStore.getFilter()
         });
@@ -36,11 +38,11 @@ class ArticleList extends Component {
             var articles = this.state.articles;
         }
         else {
-            var articles = this.state.articles.filter((a) => a.category_id == category_filter);
+            articles = this.state.articles.filter((a) => a.category_id == category_filter);
         }
         var articleNodes = articles.map(
             function(article){
-                var path = '/article/' + article.id;
+                var path = '/article/' + article.id + '/';
                 return (
                     <Article key={article.id} author={article.user} create_time={article.create_time} category_name={article.category} title={article.title} path={path}>
                         {article.body}

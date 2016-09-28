@@ -10,11 +10,14 @@ class CommentList extends Component {
         this.state = {'comments': []};
     }
     componentWillMount () {
-        CommentStore.addCommentsChangeListener(this.loadComments);
+        CommentStore.addChangeListener(this.loadComments);
         CommentActions.downloadComments(this.props.article_id);
     }
+    componentDidMount() {
+        this.loadComments();
+    }
     componentWillUnmount () {
-        CommentStore.removeCommentsChangeListener(this.loadComments);
+        CommentStore.removeChangeListener(this.loadComments);
     }
     loadComments = () => {
         console.log('load comments');
@@ -24,13 +27,18 @@ class CommentList extends Component {
     }
     render () {
         console.log('render comments.');
-        var commentNodes = this.state.comments.map(
-            function(comment){
-                return (
-                    <Comment key={comment.comment_id} content={comment.content} create_time={comment.create_time}></Comment>
-                    );
-            }
-        );
+        if (this.state.comments === undefined) {
+            var commentNodes = '';
+        }
+        else {
+            commentNodes = this.state.comments.map(
+                function(comment){
+                    return (
+                        <Comment key={comment.comment_id} content={comment.content} create_time={comment.create_time}></Comment>
+                        );
+                }
+            );
+        }
         return (
             <div id='comment-box'>
                 <CommentInputBox article_id={this.props.article_id} />

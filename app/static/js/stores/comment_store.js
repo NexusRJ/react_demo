@@ -22,7 +22,7 @@ var CommentStore = assign({}, EventEmitter.prototype, {
             }
         }).then(function (json){
             it.comments[article_id] = json['data'];
-            it.emitCommentsChange();
+            it.emitChange();
         }).catch(function(ex){
             console.log('parsing comments failed', ex);
         });
@@ -45,16 +45,16 @@ var CommentStore = assign({}, EventEmitter.prototype, {
             }
         }).then(function (json){
             it.comments[article_id].push(json['data']);
-            it.emitCommentsChange();
+            it.emitChange();
         });
     },
-    emitCommentsChange: function () {
+    emitChange: function () {
         this.emit('comment changed');
     },
-    addCommentsChangeListener: function (callback) {
+    addChangeListener: function (callback) {
         this.on('comment changed', callback);
     },
-    removeCommentsChangeListener: function (callback) {
+    removeChangeListener: function (callback) {
         this.removeListener('comment changed', callback);
     }
 });
