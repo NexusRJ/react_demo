@@ -7,13 +7,9 @@ AppDispatcher.register(function (action) {
     switch(action.actionType){
     case 'CHANGE_CATEGORY_FILTER':
         ArticleStore.change_articles_filter(action.category_id);
-        ArticleStore.emitChange();
         break;
     case 'DOWNLOAD_ARTICLES':
         ArticleStore.download_articles();
-        break;
-    case 'DOWNLOAD_ARTICLE':
-        ArticleStore.download_article(action.article_id);
         break;
     case 'DOWNLOAD_COMMENTS':
         CommentStore.download_comments(action.article_id);

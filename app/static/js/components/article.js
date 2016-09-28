@@ -1,12 +1,12 @@
-import React, {Component} from 'react'
-import 'react-bootstrap'
-import {Router, Link} from 'react-router'
+import React, {Component} from 'react';
+import 'react-bootstrap';
+import {Router, Link} from 'react-router';
 
 class Article extends Component {
     render () {
         var float_right = {
             float: 'right',
-        }
+        };
         return (
             <div className='article'>
                 <div className='title'>
@@ -33,4 +33,4 @@ class Article extends Component {
     }
 }
 
-export default Article
+export default Article;

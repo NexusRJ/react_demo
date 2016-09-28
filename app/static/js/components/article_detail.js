@@ -9,12 +9,14 @@ class ArticleDetail extends Component {
         super(props);
         this.state = {'article': ''};
     }
+    componentWillMount () {
+        ArticleStore.addChangeListener(this.loadArticle);
+    }
     componentDidMount () {
-        ArticleActions.downloadArticle(this.props.params.id);
-        ArticleStore.addOneArticleInitListener(this.loadArticle);
+        this.loadArticle();
     }
     componentWillUnmount () {
-        ArticleStore.removeOneArticleInitListener(this.loadArticle);
+        ArticleStore.removeChangeListener(this.loadArticle);
     }
     loadArticle = () => {
         console.log('load article');
@@ -23,11 +25,11 @@ class ArticleDetail extends Component {
         });
     }
     render () {
-        console.log('render articles.');
+        console.log('render article.');
         var article = this.state.article;
         return (
             <div>
-                <Article key={article.id} author={article.user} create_time={article.create_time} category_name={article.category} title={article.title} path='#'>
+                <Article key={article.id} author={article.user} create_time={article.create_time} category_name={article.category} title={article.title} path={this.props.route.path}>
                         {article.body}
                 </Article>
                 <CommentList article_id={this.props.params.id} />

@@ -14,19 +14,6 @@ var ArticleActions = {
             actionType: 'DOWNLOAD_ARTICLES',
         });
     },
-    downloadArticle: function(article_id) {
-        console.log('dispatch recive download one article');
-        AppDispatcher.dispatch({
-            actionType: 'DOWNLOAD_ARTICLE',
-            article_id: article_id
-        });
-    },
-    // loadArticles: function(){
-    //     console.log('dispatch recive load articles action');
-    //     AppDispatcher.dispatch({
-    //         actionType: 'LOAD_ARTICLES',
-    //     })
-    // }
 };
 
 export default ArticleActions;
